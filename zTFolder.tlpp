@@ -1,0 +1,52 @@
+#INCLUDE 'totvs.ch'
+#INCLUDE 'protheus.ch'
+
+User Function zTFolder()
+
+Local oDlg1
+Local oFolder
+Local aFolder
+
+Local oSay1
+Local oSay2
+Local oSay3
+
+Local oTGet1
+Local oTGet2
+Local oTGet3
+
+Local cTGet1
+Local cTGet2
+Local cTget3
+
+Local oButton1
+Local oButton2
+Local oButton3
+
+oDlg1   := TDialog():New(100,100,400,400, 'Painel de Abas TFolder' ,,,,, CLR_BLACK, CLR_WHITE,,, .T.) //Inserindo o .F. aparece aonde as coordenadas foram ajustadas na variavel
+aFolder := {'Produto', 'Armazem', 'Lote'}
+oFolder := TFolder():New(10,0, aFolder, aFolder, oDlg1,,,, .T.,, 200,200) // Inserindo as abas com o Painel
+
+// Insere um TGET e um Tsay em cada Folder
+
+oSay1           := TSay():New(01,01,{||'Cliente'}, oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE, CLR_WHITE,300,20)
+cTGet1          := Space(30)
+oTGet1          := TGet():New(10,01, {|u| IIF(Pcount()>0, cTGet1 :=u, cTGet1)}, oFolder:aDialogs[1], 096,009, "",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cTGet1,,,,)
+oButton1        := TButton():New(25,10,'Executar', oFolder:aDialogs[1], {|| MsgInfo(cTGet1, "Conteudo digitado")}, 60,15,,,.F.,.T.,.F.,,.F.,,,.F.) // Chama tela de CLientes
+
+oSay2           := TSay():New(01,01,{||'Cliente'}, oFolder:aDialogs[2],,,,,,.T.,CLR_BLUE, CLR_WHITE,300,20)
+cTGet2          := Space(30)
+oTGet2          := TGet():New(10,01, {|u| IIF(Pcount()>0, cTGet2 :=u, cTGet2)}, oFolder:aDialogs[2], 096,009, "",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cTGet2,,,,)
+oButton2        := TButton():New(60,10,'Executar', oFolder:aDialogs[2], {|| MsgInfo(cTGet2, "Conteudo digitado")}, 60,15,,,.F.,.T.,.F.,,.F.,,,.F.)
+
+oSay3           := TSay():New(01,01,{||'Cliente'}, oFolder:aDialogs[3],,,,,,.T.,CLR_BLUE, CLR_WHITE,300,20)
+cTget3          := Space(30)
+oTGet3          := TGet():New(10,01, {|u| IIF(Pcount()>0, cTget3:=u, cTget3)}, oFolder:aDialogs[3], 096,009, "",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cTget3,,,,)
+oButton3        := TButton():New(60,10,'Executar', oFolder:aDialogs[3], {|| MsgInfo(cTget3, "Conteudo digitado")}, 60,15,,,.F.,.T.,.F.,,.F.,,,.F.)
+
+
+
+oDlg1:Activate(,,,.T.)
+
+
+Return

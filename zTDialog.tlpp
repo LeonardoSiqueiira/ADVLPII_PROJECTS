@@ -1,0 +1,11 @@
+#INCLUDE 'totvs.ch'
+#INCLUDE 'protheus.ch'
+
+User Function zTDialog()
+local oDgl1 
+
+oDgl1 := TDialog():New(180,180,550,700, 'Exemplo TDialog' ,,,,, CLR_BLACK, CLR_WHITE,,, .T.)
+
+oDgl1:ACTIVATE(,,,) //Inserindo o .F. aparece aonde as coordenadas foram ajustadas na variavel
+    
+Return 
